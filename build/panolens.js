@@ -2062,6 +2062,36 @@
 	        if ( this.element && this.getContainer() ) {
 
 	            this.onHoverStart( event );
+	            
+	            const element = this;
+
+	            if ( element && event.mouseEvent.clientX >= 0 && event.mouseEvent.clientY >= 0 ) {
+
+	                const { left, right, style } = element;
+	    
+	                if ( this.mode === MODES.CARDBOARD || this.mode === MODES.STEREO ) {
+	    
+	                    style.display = 'none';
+	                    left.style.display = 'block';
+	                    right.style.display = 'block';
+	    
+	                    // Store element width for reference
+	                    element._width = left.clientWidth;
+	                    element._height = left.clientHeight;
+	    
+	                } else {
+	    
+	                    style.display = 'block';
+	                    if ( left ) { left.style.display = 'none'; }
+	                    if ( right ) { right.style.display = 'none'; }
+	    
+	                    // Store element width for reference
+	                    element._width = element.clientWidth;
+	                    element._height = element.clientHeight;
+	    
+	                }
+	                
+	            }
 
 	            // Lock element
 	            this.lockHoverElement();
@@ -2103,12 +2133,12 @@
 	     * @memberOf Infospot
 	     * @instance
 	     */
-	    onHoverStart: function ( event ) {
+	    onHoverStart: function () {
 
 	        if ( !this.getContainer() ) { return; }
 
 	        const cursorStyle = this.cursorStyle || ( this.mode === MODES.NORMAL ? 'pointer' : 'default' );
-	        const { scaleDownAnimation, scaleUpAnimation, element } = this;
+	        const { scaleDownAnimation, scaleUpAnimation} = this;
 
 	        this.isHovering = true;
 	        this.container.style.cursor = cursorStyle;
@@ -2120,33 +2150,7 @@
 
 	        }
 			
-	        if ( element && event.mouseEvent.clientX >= 0 && event.mouseEvent.clientY >= 0 ) {
-
-	            const { left, right, style } = element;
-
-	            if ( this.mode === MODES.CARDBOARD || this.mode === MODES.STEREO ) {
-
-	                style.display = 'none';
-	                left.style.display = 'block';
-	                right.style.display = 'block';
-
-	                // Store element width for reference
-	                element._width = left.clientWidth;
-	                element._height = left.clientHeight;
-
-	            } else {
-
-	                style.display = 'block';
-	                if ( left ) { left.style.display = 'none'; }
-	                if ( right ) { right.style.display = 'none'; }
-
-	                // Store element width for reference
-	                element._width = element.clientWidth;
-	                element._height = element.clientHeight;
-
-	            }
-				
-	        }
+	        
 
 	    },
 
@@ -2160,7 +2164,7 @@
 
 	        if ( !this.getContainer() ) { return; }
 
-	        const { scaleDownAnimation, scaleUpAnimation, element } = this;
+	        const { scaleDownAnimation, scaleUpAnimation } = this;
 
 	        this.isHovering = false;
 	        this.container.style.cursor = 'default';
@@ -2172,17 +2176,19 @@
 
 	        }
 
-	        if ( element && !this.element.locked ) {
-
-	            const { left, right, style } = element;
-
-	            style.display = 'none';
-	            if ( left ) { left.style.display = 'none'; }
-	            if ( right ) { right.style.display = 'none'; }
-
-	            this.unlockHoverElement();
-
-	        }
+	        /*
+	         * if ( element && !this.element.locked ) {
+	         *
+	         * const { left, right, style } = element;
+	         *
+	         * style.display = 'none';
+	         * if ( left ) { left.style.display = 'none'; }
+	         * if ( right ) { right.style.display = 'none'; }
+	         *
+	         * this.unlockHoverElement();
+	         *
+	         *} 
+	         */
 
 	    },
 
