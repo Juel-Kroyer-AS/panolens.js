@@ -164,7 +164,11 @@ Infospot.prototype = Object.assign( Object.create( THREE.Sprite.prototype ), {
     onClick: function ( event ) {
 
         if ( this.element && this.getContainer() ) {
-            this.getContainer().getElementsByClassName().style.display = 'none';
+            var infospots = this.getContainer().getElementsByClassName('panolens-infospot');
+            for (let i = 0; i < infospots.length; i++) {
+                infospots[i].style.display = 'none';
+                
+            }
             this.onHoverStart( event );
             
             const element = this.element;
