@@ -2059,7 +2059,7 @@ Infospot.prototype = Object.assign( Object.create( Sprite.prototype ), {
 
             this.onHoverStart( event );
             
-            const element = this;
+            const element = this.element;
 
             if ( element && event.mouseEvent.clientX >= 0 && event.mouseEvent.clientY >= 0 ) {
 
@@ -2094,7 +2094,7 @@ Infospot.prototype = Object.assign( Object.create( Sprite.prototype ), {
 
         }
 
-    },
+    },    
 
     /**
      * Dismiss current element if any
@@ -2149,6 +2149,7 @@ Infospot.prototype = Object.assign( Object.create( Sprite.prototype ), {
         
 
     },
+
 
     /**
      * This will be called on a mouse hover end

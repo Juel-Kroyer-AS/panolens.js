@@ -2063,7 +2063,7 @@
 
 	            this.onHoverStart( event );
 	            
-	            const element = this;
+	            const element = this.element;
 
 	            if ( element && event.mouseEvent.clientX >= 0 && event.mouseEvent.clientY >= 0 ) {
 
@@ -2098,7 +2098,7 @@
 
 	        }
 
-	    },
+	    },    
 
 	    /**
 	     * Dismiss current element if any
@@ -2153,6 +2153,7 @@
 	        
 
 	    },
+
 
 	    /**
 	     * This will be called on a mouse hover end
