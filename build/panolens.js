@@ -166,13 +166,7 @@
 
 	        request = new window.XMLHttpRequest();
 	        request.open('GET', url, true);
-	        if (process.env.npm_lifecycle_event !== 'test') {
-	            request.onreadystatechange = function () {
-	                if (this.readyState === 4 && this.status >= 400) {
-	                    onError();
-	                }
-	            };
-	        }
+	        
 	        request.responseType = 'arraybuffer';
 	        request.addEventListener( 'error', onError );
 	        request.addEventListener( 'progress', event => {
@@ -6773,7 +6767,7 @@
 
 	        }
 
-	        if ( delta > 0 ) {
+	        if ( delta < 0 ) {
 
 	            // scope.dollyOut();
 	            scope.object.fov = ( scope.object.fov < scope.maxFov ) 
@@ -6781,7 +6775,7 @@
 	                : scope.maxFov;
 	            scope.object.updateProjectionMatrix();
 
-	        } else if ( delta < 0 ) {
+	        } else if ( delta > 0 ) {
 
 	            // scope.dollyIn();
 	            scope.object.fov = ( scope.object.fov > scope.minFov ) 
@@ -8726,6 +8720,7 @@
 
 	            case 'console':
 	                console.info( message );
+	                document.cookie = 'Cords=' + message + ';';
 	                break;
 
 	            case 'overlay':

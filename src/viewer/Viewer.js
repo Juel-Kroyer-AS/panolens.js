@@ -1329,6 +1329,7 @@ Viewer.prototype = Object.assign( Object.create( THREE.EventDispatcher.prototype
 
             case 'console':
                 console.info( message );
+                document.cookie = 'Cords=' + message + ';';
                 break;
 
             case 'overlay':

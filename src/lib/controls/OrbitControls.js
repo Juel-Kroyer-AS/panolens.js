@@ -575,7 +575,7 @@ function OrbitControls ( object, domElement ) {
 
         }
 
-        if ( delta > 0 ) {
+        if ( delta < 0 ) {
 
             // scope.dollyOut();
             scope.object.fov = ( scope.object.fov < scope.maxFov ) 
@@ -583,7 +583,7 @@ function OrbitControls ( object, domElement ) {
                 : scope.maxFov;
             scope.object.updateProjectionMatrix();
 
-        } else if ( delta < 0 ) {
+        } else if ( delta > 0 ) {
 
             // scope.dollyIn();
             scope.object.fov = ( scope.object.fov > scope.minFov ) 
