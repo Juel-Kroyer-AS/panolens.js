@@ -269,7 +269,7 @@ Infospot.prototype = Object.assign( Object.create( THREE.Sprite.prototype ), {
 
         if ( !this.getContainer() ) { return; }
 
-        const { scaleDownAnimation, scaleUpAnimation } = this;
+        const { scaleDownAnimation, scaleUpAnimation, element } = this;
 
         this.isHovering = false;
         this.container.style.cursor = 'default';
@@ -281,19 +281,19 @@ Infospot.prototype = Object.assign( Object.create( THREE.Sprite.prototype ), {
 
         }
 
-        /*
-         * if ( element && !this.element.locked ) {
-         *
-         * const { left, right, style } = element;
-         *
-         * style.display = 'none';
-         * if ( left ) { left.style.display = 'none'; }
-         * if ( right ) { right.style.display = 'none'; }
-         *
-         * this.unlockHoverElement();
-         *
-         *} 
-         */
+        
+        if ( element && !this.element.locked ) {
+        
+            const { left, right, style } = element;
+        
+            style.display = 'none';
+            if ( left ) { left.style.display = 'none'; }
+            if ( right ) { right.style.display = 'none'; }
+        
+            this.unlockHoverElement();
+         
+        } 
+         
 
     },
 
