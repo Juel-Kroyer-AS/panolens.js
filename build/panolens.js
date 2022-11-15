@@ -2060,7 +2060,7 @@
 	    onClick: function ( event ) {
 
 	        if ( this.element && this.getContainer() ) {
-	            this.onHoverEnd();
+
 	            this.onHoverStart( event );
 	            
 	            const element = this.element;

@@ -2056,7 +2056,7 @@ Infospot.prototype = Object.assign( Object.create( Sprite.prototype ), {
     onClick: function ( event ) {
 
         if ( this.element && this.getContainer() ) {
-            this.onHoverEnd();
+
             this.onHoverStart( event );
             
             const element = this.element;
